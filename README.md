@@ -4,9 +4,9 @@ The Sticky-Notes web application provides a place for users to create and share 
 
 ## Environment Variables
 
-To run this project, you will need to add the following environment variables to your .env file
+To run this project, you will need to add the following environment variables to a .env file within the `.\stickyNotes\stickyNotes\` directory.
 
-`SECRET_KEY`
+`SECRET_KEY='django-insecure-pn8_$hke)!=4a-sptirlgouhrr5)9$#cacz1n$k#&rxgtecqqt'`
 
 ## Installation
 
