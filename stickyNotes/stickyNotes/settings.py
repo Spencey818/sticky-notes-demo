@@ -30,6 +30,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CSRF_COOKIE_HTTPONLY = False
 
 # Application definition
 
@@ -130,6 +131,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = 'webapp/static'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
@@ -153,8 +156,7 @@ MARTOR_ENABLE_CONFIGS = {
 MARTOR_TOOLBAR_BUTTONS = [
     'bold', 'italic', 'horizontal', 'heading', 'pre-code',
     'blockquote', 'unordered-list', 'ordered-list',
-    'link', 'image-upload',
-    'direct-mention', 'toggle-maximize', 'help'
+    'link', 'toggle-maximize', 'help'
 ]
 
 # To setup the martor editor with title label or not (default is False)
@@ -189,8 +191,8 @@ MARTOR_SEARCH_USERS_URL = '/martor/search-user/' # default
 
 # Markdown Extensions (Unused)
 # MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://www.webfx.com/tools/emoji-cheat-sheet/graphics/emojis/'     # from webfx
-#MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji/'                  # default from github
-#MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'   
+# MARTOR_MARKDOWN_BASE_EMOJI_URL = 'https://github.githubassets.com/images/icons/emoji/'                  # default from github
+# MARTOR_MARKDOWN_BASE_MENTION_URL = 'https://python.web.id/author/'   
 
 # URL schemes that are allowed within links
 ALLOWED_URL_SCHEMES = [
