@@ -24,5 +24,5 @@ Install sticky-notes webapp using the commands below:
     
 ## Acknowledgements
 
- - [Martor](https://github.com/agusmakmun/django-markdown-editor)
- - [Django](https://www.djangoproject.com/)
+ - [Martor](https://github.com/agusmakmun/django-markdown-editor) - Martor is an open-source Markdown plugin for the Django framework
+ - [Django](https://www.djangoproject.com/) - Django is an open-source Python web framework
