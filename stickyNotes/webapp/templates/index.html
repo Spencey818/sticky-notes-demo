@@ -2,11 +2,77 @@
 {% load static %}
 {% block title %}Index{% endblock %}
 {% block content %}
+{% load martortags %}
 
 <div class="container">
 
+    {% if user.is_authenticated %}
+
+        <!-- Start Modal -->
+        <div class="modal fade" id="newNoteModal" tabindex="-1" aria-labelledby="newNoteModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newNoteModalLabel">New Note</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" data-bs-target="#newNoteModal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post">
+                            {% csrf_token %}
+                            {{ form }}
+                            <input class="btn btn-outline-primary float-end" type="submit" value="Save Note" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Modal -->
+
+        <btn class="btn btn-outline-primary float-end note-btn" data-bs-toggle="modal" data-bs-target="#newNoteModal">New Note</btn>
+
+        <br />
+        <hr />
+
+        <div class="container">
+
+            <div class="row notes">
+
+                {% for id, note in notes %}
+
+                    <div class="card col-md-3">
+                        <div class="card-header">
+                            Note #{{id}}
+                        </div>
+                        <div class="card-body">
+                            {{note|safe_markdown}}
+                        </div>
+                        <div class="card-footer">
+                            <btn class="btn btn-outline-primary float-end">View Note</btn>
+                        </div>
+                    </div>
+
+                    {% if forloop.counter|divisibleby:"3" %}
+                        </div>
+
+                        <div class="row notes">
+                    {% endif %}
+
+                {% empty %}
+
+                    <h4 class="text-center">No notes found :(</h4>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    {% else %}
 
     
+
+    {% endif %}
+
 </div>
 
 {% endblock %}

@@ -1,13 +1,29 @@
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, NewNoteForm
+from webapp.models import Notes
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.sessions.models import Session
 
-# Create your views here.
+# Returns the Index and Dashboard page
 def index(request):
-    return render(request, 'index.html')
+    if request.user.is_authenticated:
+        if request.method == 'POST':
+            form = NewNoteForm(request.POST)
+            if form.is_valid():
+                Notes.objects.create(user=request.user, note=request.POST['note'])
+
+        form = NewNoteForm()
+        query = list(Notes.objects.filter(user=request.user).values('id', 'note'))
+        noteIDs = []
+        notes = []
+        for x in range(0, len(query)):
+            noteIDs.append(query[x]['id'])
+            notes.append(query[x]['note'])
+        return render(request, 'index.html', context={'form': form, 'notes': zip(noteIDs, notes)})
+    else:
+        return render(request, 'index.html')
 
 
 # Handles new user registration.
