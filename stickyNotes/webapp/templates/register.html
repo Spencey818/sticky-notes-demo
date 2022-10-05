@@ -1,0 +1,40 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}Register{% endblock %}
+{% block content %}
+
+    <body>
+
+        <div class="container text-white py-5">
+            <h1>Register</h1>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="projectName">Username:</label>
+                    {{ register_form.username }}
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="projectName">Email:</label>
+                    {{ register_form.email }}
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="projectName">Password:</label>
+                    {{ register_form.password1 }}
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="projectName">Repeat Password:</label>
+                    {{ register_form.password2 }}
+                </div>
+                <br />                       
+                <button class="btn btn-primary" type="submit">Register</button>
+            </form>
+            <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+        </div>
+
+    </body>
+
+
+{% endblock %} 
