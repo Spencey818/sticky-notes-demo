@@ -22,3 +22,7 @@ Install sticky-notes webapp using the commands below:
   python manage.py runserver
 ```
     
+## Acknowledgements
+
+ - [Martor](https://github.com/agusmakmun/django-markdown-editor)
+ - [Django](https://www.djangoproject.com/)
