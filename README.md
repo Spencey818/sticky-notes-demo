@@ -18,7 +18,7 @@ Install sticky-notes webapp using the commands below:
   .venv\Scripts\activate
   python -m pip install -r requirements.txt
   cd stickyNotes
-  python manage.py migrate
+  python manage.py migrate (skip if using the premade db)
   python manage.py runserver
 ```
     
