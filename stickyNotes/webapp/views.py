@@ -26,6 +26,11 @@ def index(request):
         return render(request, 'index.html')
 
 
+def viewNote(request, noteID):
+    print(noteID)
+    return redirect('Index')
+
+
 # Handles new user registration.
 def register_request(request):
     if request.method == "POST":
