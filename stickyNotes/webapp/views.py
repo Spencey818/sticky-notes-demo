@@ -16,7 +16,7 @@ def index(request):
             if form.is_valid():
                 Notes.objects.create(user=request.user, note=request.POST['note'])
                 engine = engines["jinja2"]
-                template = engine.from_string("{% extends 'jinjaHeader.html' %}{% block title %}Note{% endblock %}{% block content %}<div class='container'>" + request.POST['note'] + "</div>{% endblock %}")
+                template = engine.from_string("{% extends 'jinjaHeader.html' %}{% block title %}Note{% endblock %}{% block content %}<div class='container'><p class='float-end'>Author: {{request.user.username}}</p>" + request.POST['note'] + "</div>{% endblock %}")
                 return HttpResponse(template.render({}, request))
 
         form = NewNoteForm()
@@ -32,11 +32,12 @@ def index(request):
 
 
 # Returns specified note
-def viewNote(request, noteID):
-    query = list(Notes.objects.filter(id=noteID).values('note'))
+def viewNote(request, userID, noteID):
+    query = list(Notes.objects.filter(id=noteID, user_id=userID).values('note', 'user_id'))
     if len(query) > 0:
+        userQuery = list(User.objects.filter(id=query[0]['user_id']).values('username'))
         note = query[0]['note']
-        return render(request, 'viewNote.html', context={'note': note})
+        return render(request, 'viewNote.html', context={'note': note, 'author': userQuery[0]['username']})
     else:
         return redirect('Index')
 
