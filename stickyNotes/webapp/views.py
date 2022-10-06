@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
 from .forms import NewUserForm, NewNoteForm
 from webapp.models import Notes
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.sessions.models import Session
+from django.template import engines
 
 # Returns the Index and Dashboard page
 def index(request):
@@ -13,6 +15,9 @@ def index(request):
             form = NewNoteForm(request.POST)
             if form.is_valid():
                 Notes.objects.create(user=request.user, note=request.POST['note'])
+                engine = engines["jinja2"]
+                template = engine.from_string("{% extends 'jinjaHeader.html' %}{% block title %}Note{% endblock %}{% block content %}<div class='container'>" + request.POST['note'] + "</div>{% endblock %}")
+                return HttpResponse(template.render({}, request))
 
         form = NewNoteForm()
         query = list(Notes.objects.filter(user=request.user).values('id', 'note'))
@@ -20,15 +25,20 @@ def index(request):
         notes = []
         for x in range(0, len(query)):
             noteIDs.append(query[x]['id'])
-            notes.append(query[x]['note'])
+            notes.append(query[x]['note'][:100] + '...')
         return render(request, 'index.html', context={'form': form, 'notes': zip(noteIDs, notes)})
     else:
         return render(request, 'index.html')
 
 
+# Returns specified note
 def viewNote(request, noteID):
-    print(noteID)
-    return redirect('Index')
+    query = list(Notes.objects.filter(id=noteID).values('note'))
+    if len(query) > 0:
+        note = query[0]['note']
+        return render(request, 'viewNote.html', context={'note': note})
+    else:
+        return redirect('Index')
 
 
 # Handles new user registration.

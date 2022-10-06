@@ -1,0 +1,13 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block title %}Note #{{noteID}}{% endblock %}
+{% block content %}
+{% load martortags %}
+
+<div class="container">
+
+    {{note|safe}}
+
+</div>
+
+{% endblock %}

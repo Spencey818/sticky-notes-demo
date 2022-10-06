@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>{% block title %}{% endblock %} - Sticky Notes</title>
+        <link rel="stylesheet" href="{{ static('webapp\css\site.css') }}" />
+        <link rel="stylesheet" href="{{ static('webapp/lib/bootstrap/dist/css/bootstrap.css') }}" />
+        <link href="{{ static('plugins/css/ace.min.css') }}" type="text/css" media="all" rel="stylesheet" />
+        <link href="{{ static('plugins/css/resizable.min.css') }}" type="text/css" media="all" rel="stylesheet" />
+        <link href="{{ static('martor/css/martor.bootstrap.css') }}" type="text/css" media="all" rel="stylesheet" />
+    </head>
+
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark border-bottom box-shadow mb-3 text-white">
+            <div class="container">
+                <a class="navbar-brand" href="/">Sticky Notes</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/">Dashboard</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav flex-grow-1 justify-content-end">
+                        <li class="nav-item">
+                            <a class="nav-link text-white">{{ request.user.username }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/logout">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <body>
+        {% block content %}
+
+        {% endblock %}         
+    </body>
+
+    <script src="{{ static('webapp/lib/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ static('webapp/lib/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/jquery.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static('martor/js/martor.bootstrap.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/ace.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/mode-markdown.js')}}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/ext-language_tools.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/theme-github.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/typo.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/spellcheck.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/highlight.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/resizable.min.js') }}"></script>
+    <script type="text/javascript" src="{{ static('plugins/js/emojis.min.js') }}"></script>
+</html>

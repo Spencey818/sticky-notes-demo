@@ -79,6 +79,15 @@ TEMPLATES = [
             ],
         },
     },
+    {
+        'BACKEND': 'django.template.backends.jinja2.Jinja2',
+        'DIRS': [
+            BASE_DIR / 'webapp/templates/',
+        ],
+        'OPTIONS': {
+            'environment': 'webapp.jinja2.environment',
+        },
+    },
 ]
 
 WSGI_APPLICATION = 'stickyNotes.wsgi.application'
