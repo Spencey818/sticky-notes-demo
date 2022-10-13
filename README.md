@@ -19,7 +19,7 @@ Install sticky-notes webapp using the commands below:
   python -m pip install -r requirements.txt
   cd stickyNotes
   python manage.py migrate (skip if using the premade db)
-  python manage.py runserver
+  python manage.py runserver 0.0.0.0:8000
 ```
     
 ## Acknowledgements
