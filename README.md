@@ -2,12 +2,6 @@
 
 The Sticky-Notes web application provides a place for users to create and share notes. The web application uses the Django framework for its backend webserver, and Martor for markdown support.
 
-## Environment Variables
-
-To run this project, you will need to add the following environment variables to a .env file within the `.\stickyNotes\stickyNotes\` directory.
-
-`SECRET_KEY='django-insecure-pn8_$hke)!=4a-sptirlgouhrr5)9$#cacz1n$k#&rxgtecqqt'`
-
 ## Installation
 
 Install sticky-notes webapp using the commands below:
