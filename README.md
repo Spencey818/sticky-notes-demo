@@ -1,6 +1,6 @@
 # Sticky-Notes
 
-The Sticky-Notes web application provides a place for users to create and share notes. The web application uses the Django framework for its backend webserver, and Martor for markdown support.
+The Sticky-Notes web application is intentionally vulnerable and provides a place for users to create and share notes. The web application uses the Django framework for its backend webserver, and Martor for markdown support.
 
 ## Installation
 
